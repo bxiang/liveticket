@@ -1,0 +1,38 @@
+<section data-ng-controller="TicketsController">
+    <div class="page-header">
+        <h1>New Ticket</h1>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="create()">
+            <fieldset>
+                <div class="form-group">
+                    <label class="control-label" for="description">Description</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="description" id="description" class="form-control" placeholder="Description" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="detail">Detail</label>
+                    <div class="controls">
+                        <textarea data-ng-model="detail" id="detail" class="form-control" cols="30" rows="10" placeholder="Detail"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="priority">Priority</label>
+                    <div class="controls">
+                      <select class="input-small" id="priority" data-ng-model="priority" data-ng-options="priority for priority in lookup.priorities" required></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="severity">Severity</label>
+                    <div class="controls">
+                      <select class="input-small" id="severity" data-ng-model="severity" data-ng-options="severity for severity in lookup.severities" required></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default">
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</section>
