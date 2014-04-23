@@ -96,7 +96,7 @@ angular.module('imaps').controller('ImapsController', ['$scope', '$stateParams',
                     {
                         latitude: 43.769000,
                         longitude: -79.397049,
-                        showWindow: true,
+                        showWindow: false,
                         title: 'Loc2'
                     },
                     {
