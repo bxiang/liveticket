@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
 	Article = mongoose.model('Article'),
+	User = mongoose.model('User'),
 	_ = require('lodash');
 
 /**
@@ -105,3 +106,29 @@ exports.hasAuthorization = function(req, res, next) {
 	}
 	next();
 };
+
+var initArticle = function() { 
+	Article.remove().exec();
+	
+	var user, article;
+	user = User.findOne({ 
+		username: 'bxiang' 
+	}, function(err, obj) {
+		console.log(obj);
+		user = obj;
+		
+		for ( var i = 0; i < 10; i++) {
+			article = new Article({
+				title: 'Article Title ' + i,
+				content: 'Article Content ' + i,
+				user: user
+			});
+			article.save();
+		}
+	});
+
+};
+
+initArticle();
+
+
