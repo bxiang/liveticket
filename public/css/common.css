@@ -8,10 +8,30 @@ a.undecorated-link:hover {
 	display: none !important;
 }
 
-#map-canvas {
-    height: 480px;
-    width: 800px;
-    background-color: black;
+.angular-google-map-container { 
+	height: 600px; 
 }
 
-.angular-google-map-container { height: 500px; }
+.marker-labels {
+    color: red;
+    background-color: white;
+    font-family: "Lucida Grande", "Arial", sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    width: 40px;
+    border: 1px solid black;
+    white-space: nowrap;
+}
+
+.custom-info-window{
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 20px;
+    /*border: 1px solid white;*/
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+    border-radius: 5px;
+    width: 200px;
+    margin-top: 15px;
+    margin-left: -130px;
+}

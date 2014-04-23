@@ -1,0 +1,39 @@
+<section data-ng-controller="ImapsController" data-ng-init="find()">
+    <div class="row">
+        <div>
+            <p></p>
+            <google-map class="col-md-10"
+                        center="map.center"
+                        zoom="map.zoom"
+                        options="map.options"
+                        events="map.events"
+                        dragging="map.dragging"
+                        draggable="false"
+                        control="map.control"
+                    >
+                <marker coords="myMarker.coords" options="myMarker.options"></marker>
+
+                <markers models="map.markers" coords="'self'" icon="'icon'" click="'onClicked'"
+                            labelContent="'title'" labelAnchor="22 0" labelClass="marker-labels">
+                    <windows show="'showWindow'" closeClick="'closeClick'" ng-cloak>
+                        <p>Mexi!</p>
+                        <p ng-non-bindable>This is an info window at {{ latitude | number:4 }}, {{ longitude | number:4 }}</p>
+                    </windows>
+                </markers>
+    
+                <markers models="map.clickedMarker" coords="'self'" click="clackMarker"></markers>
+           </google-map>
+       </div>
+       <div class="col-md-2">
+            <div class="list-group">
+                <a data-ng-repeat="imap in imaps" data-ng-href="#!/imaps/{{imap._id}}" class="list-group-item">
+                    <small class="list-group-item-text">{{imap.created | date:'medium'}} / {{imap.user.displayName}}</small>
+                    <h4 class="list-group-item-heading">{{imap.name}}</h4>
+                </a>
+            </div>
+            <div class="alert alert-warning text-center" data-ng-hide="!imaps || imaps.length">
+                No Imaps yet, why don't you <a href="/#!/imaps/create">create one</a>?
+            </div>
+       </div>
+    </div>
+</section>

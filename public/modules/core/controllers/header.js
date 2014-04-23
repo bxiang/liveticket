@@ -14,6 +14,10 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 			link: 'tickets/create',
 			uiRoute: '/tickets/create'
 		}, {
+			title: 'Map Test',
+			link: 'imaps',
+			uiRoute: '/imaps'
+		}, {
 			title: 'Articles',
 			link: 'articles',
 			uiRoute: '/articles'
