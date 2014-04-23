@@ -34,7 +34,10 @@
                         draggable="true"
                         control="map.control"
                     >
-                <marker coords="map.myMarker" options="map.marker.options"></marker>
+                <markers models="map.markers" coords="'self'" icon="'icon'" click="'onClicked'"
+                            labelContent="'title'" labelAnchor="22 0" labelClass="marker-labels">
+                </markers>
+
            </google-map>
         </div>
 
