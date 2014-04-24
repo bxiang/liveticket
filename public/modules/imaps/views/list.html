@@ -11,17 +11,16 @@
                         draggable="false"
                         control="map.control"
                     >
-                <marker coords="myMarker.coords" options="myMarker.options"></marker>
+                <marker coords="map.myMarker.coords" options="map.myMarker.options"></marker>
 
                 <markers models="map.markers" coords="'self'" icon="'icon'" click="'onClicked'"
                             labelContent="'title'" labelAnchor="22 0" labelClass="marker-labels">
                     <windows show="'showWindow'" closeClick="'closeClick'" ng-cloak>
-                        <p>Mexi!</p>
-                        <p ng-non-bindable>This is an info window at {{ latitude | number:4 }}, {{ longitude | number:4 }}</p>
+                        <p>Howdy!</p>
+                        <p ng-non-bindable>{{ latitude | number:4 }}, {{ longitude | number:4 }}</p>
                     </windows>
                 </markers>
     
-                <markers models="map.clickedMarker" coords="'self'" click="clackMarker"></markers>
            </google-map>
        </div>
        <div class="col-md-4">
@@ -35,14 +34,14 @@
               </thead>
               <tbody>
               <tr ng-repeat="imap in imaps | orderBy:'name':false">
-                <td><a data-ng-href="#!/imaps/{{imap._id}}">{{imap.name}}</a></td>
-                <td>{{imap.latitude}}</td>
-                <td>{{imap.longitude}}</td>
+                <td><a data-ng-href="#!/imaps/{{imap._id}}">{{ imap.name }}</a></td>
+                <td>{{ imap.latitude | number:6 }}</td>
+                <td>{{ imap.longitude | number:6 }}</td>
               </tr>
               </tbody>
             </table>
-            <div class="alert alert-warning text-center" data-ng-hide="!imaps || imaps.length">
-                No Imaps yet, why don't you <a href="/#!/imaps/create">create one</a>?
+            <div>
+                <a href="/#!/imaps/create">Add new</a>
             </div>
        </div>
     </div>

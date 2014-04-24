@@ -86,11 +86,11 @@ var _initArticle = function(db) {
 
 
 var _getLatitude = function() {
-	return (43 + (_.random(750000, 800000) /1000000)).toPrecision(8);
+	return (43 + (_.random(740000, 810000) /1000000)).toPrecision(8);
 };
 
 var _getLongitude = function() {
-	return (-79 - (_.random(360000, 450000) /1000000)).toPrecision(8);
+	return (-79 - (_.random(340000, 460000) /1000000)).toPrecision(8);
 };
 
 var _initMap = function(db) { 
@@ -104,7 +104,7 @@ var _initMap = function(db) {
 	}, function(err, obj) {
 		for ( var i = 0; i < 20; i++) {
 			imap = new Imap({
-				name: 'Loc ' + i,
+				name: 'H' + i,
 				latitude: _getLatitude(),
 				longitude: _getLongitude(),
 				user: obj
