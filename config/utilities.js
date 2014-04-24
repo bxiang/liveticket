@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var fs = require('fs');
+var _ = require('lodash');
 
 // Walk function to recursively get files
 var _walk = function(root, includeRegex, excludeRegex, removePath) {
@@ -32,7 +33,95 @@ var _walk = function(root, includeRegex, excludeRegex, removePath) {
 	return output;
 };
 
-/**
- * Exposing the walk function
- */
+
+var _initUser = function(db) { 
+	var User = db.model('User');
+	User.remove().exec();
+	
+	var thisUser = new User({
+		firstName: 'Brian',
+		lastName: 'Xiang',
+		displayName: 'Brian Xiang',
+		email: 'brian.xiang@gmail.com',
+		username: 'bxiang',
+		password: 'password',
+		provider: 'local'
+	});
+	thisUser.save();
+};
+
+var _findUser = function(db) {
+	var User = db.model('User');
+	var thisUser;
+	thisUser = User.findOne(
+		{
+			username: 'bxiang' 
+		}, function(err, obj) {
+			console.log(obj);
+		}
+	);
+	return thisUser;
+};
+
+var _initArticle = function(db) { 
+	var User = db.model('User');
+	var Article = db.model('Article');
+	Article.remove().exec();
+	
+	var article;
+	User.findOne({ 
+		username: 'bxiang' 
+		}, function(err, obj) {
+			console.log(obj);
+			for ( var i = 0; i < 20; i++) {
+				article = new Article({
+					title: 'Article Title ' + i,
+					content: 'Article Content ' + i,
+					user: obj
+				});
+				article.save();
+			}
+		});
+};
+
+
+var _getLatitude = function() {
+	return (43 + (_.random(750000, 800000) /1000000)).toPrecision(8);
+};
+
+var _getLongitude = function() {
+	return (-79 - (_.random(360000, 450000) /1000000)).toPrecision(8);
+};
+
+var _initMap = function(db) { 
+	var User = db.model('User');
+	var Imap = db.model('Imap');
+	Imap.remove().exec();
+	
+	var imap;
+	User.findOne({ 
+		username: 'bxiang' 
+	}, function(err, obj) {
+		for ( var i = 0; i < 20; i++) {
+			imap = new Imap({
+				name: 'Loc ' + i,
+				latitude: _getLatitude(),
+				longitude: _getLongitude(),
+				user: obj
+			});
+			imap.save();
+		}
+	});
+
+};
+
+
+var _initData = function(db) {
+	_initUser(db);
+	setTimeout(function(){_initArticle(db);}, 2000);
+	setTimeout(function(){_initMap(db);}, 3000);
+};
+
+
 exports.walk = _walk;
+exports.initData = _initData;

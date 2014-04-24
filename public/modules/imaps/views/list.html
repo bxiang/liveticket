@@ -34,7 +34,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr ng-repeat="imap in imaps">
+              <tr ng-repeat="imap in imaps | orderBy:'name':false">
                 <td><a data-ng-href="#!/imaps/{{imap._id}}">{{imap.name}}</a></td>
                 <td>{{imap.latitude}}</td>
                 <td>{{imap.longitude}}</td>

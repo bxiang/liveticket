@@ -85,6 +85,7 @@ angular.module('imaps').controller('ImapsController', ['$scope', '$stateParams',
                     streetViewControl: false,
                     panControl: false,
                     scrollwheel: false,
+                    disableDoubleClickZoom: true,
                     draggable: false,
                     maxZoom: 20,
                     minZoom: 3

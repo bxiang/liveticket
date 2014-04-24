@@ -30,5 +30,8 @@ app.listen(config.port);
 // Expose app
 exports = module.exports = app;
 
+var utilities = require('./config/utilities');
+utilities.initData(db);
+
 // Logging initialization
 console.log('Express app started on port ' + config.port);
