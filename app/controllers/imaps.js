@@ -105,3 +105,28 @@ exports.hasAuthorization = function(req, res, next) {
 	}
 	next();
 };
+
+var initMap = function() { 
+	Imap.remove().exec();
+	
+	var user, imap;
+	user = User.findOne({ 
+		username: 'bxiang' 
+	}, function(err, obj) {
+		console.log(obj);
+		user = obj;
+		
+		for ( var i = 0; i < 10; i++) {
+			imap = new Imap({
+				name: 'Loc ' + i,
+				latitude: 55,
+				longtigude: -79,
+				user: user
+			});
+			imap.save();
+		}
+	});
+
+};
+
+// initMap();

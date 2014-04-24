@@ -9,7 +9,9 @@ angular.module('imaps').controller('ImapsController', ['$scope', '$stateParams',
         $scope.create = function() {
         	// Create new Imap object
             var imap = new Imaps({
-                name: this.name
+                name: this.name,
+                latitude: this.latitude,
+                longitude: this.longitude
             });
 
             // Redirect after save
@@ -19,6 +21,8 @@ angular.module('imaps').controller('ImapsController', ['$scope', '$stateParams',
 
             // Clear form fields
             this.name = '';
+            this.latitude = null;
+            this.longitude = null;
         };
 
         // Remove existing Imap

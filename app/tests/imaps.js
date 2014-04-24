@@ -30,6 +30,8 @@ describe('Imap Model Unit Tests:', function() {
 		user.save(function() { 
 			imap = new Imap ({
 				name: 'Imap Name',
+				latitude: 45.096787,
+				longitude: 67.40009,
 				user: user
 			});
 

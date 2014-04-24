@@ -2,7 +2,7 @@
     <div class="row">
         <div>
             <p></p>
-            <google-map class="col-md-10"
+            <google-map class="col-md-8"
                         center="map.center"
                         zoom="map.zoom"
                         options="map.options"
@@ -24,13 +24,23 @@
                 <markers models="map.clickedMarker" coords="'self'" click="clackMarker"></markers>
            </google-map>
        </div>
-       <div class="col-md-2">
-            <div class="list-group">
-                <a data-ng-repeat="imap in imaps" data-ng-href="#!/imaps/{{imap._id}}" class="list-group-item">
-                    <small class="list-group-item-text">{{imap.created | date:'medium'}} / {{imap.user.displayName}}</small>
-                    <h4 class="list-group-item-heading">{{imap.name}}</h4>
-                </a>
-            </div>
+       <div class="col-md-4">
+            <table class="table table-striped table-bordered table-condensed table-hover">
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="imap in imaps">
+                <td><a data-ng-href="#!/imaps/{{imap._id}}">{{imap.name}}</a></td>
+                <td>{{imap.latitude}}</td>
+                <td>{{imap.longitude}}</td>
+              </tr>
+              </tbody>
+            </table>
             <div class="alert alert-warning text-center" data-ng-hide="!imaps || imaps.length">
                 No Imaps yet, why don't you <a href="/#!/imaps/create">create one</a>?
             </div>
