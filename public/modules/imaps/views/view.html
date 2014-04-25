@@ -11,6 +11,6 @@
 		</a>
 	</div>
 	<small>
-		<em class="text-muted">[{{imap.latitude}}, {{imap.longitude}}] posted on {{imap.created | date:'mediumDate'}} by {{imap.user.displayName}}</em>
+		<em class="text-muted">[{{ imap.gps.coordinates[1] }}, {{ imap.gps.coordinates[0] }}] posted on {{imap.created | date:'mediumDate'}} by {{imap.user.displayName}}</em>
 	</small>
 </section>

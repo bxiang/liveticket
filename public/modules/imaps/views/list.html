@@ -35,8 +35,8 @@
               <tbody>
               <tr ng-repeat="imap in imaps | orderBy:'name':false">
                 <td><a data-ng-href="#!/imaps/{{imap._id}}">{{ imap.name }}</a></td>
-                <td>{{ imap.latitude | number:6 }}</td>
-                <td>{{ imap.longitude | number:6 }}</td>
+                <td>{{ imap.gps.coordinates[1] | number:6 }}</td>
+                <td>{{ imap.gps.coordinates[0] | number:6 }}</td>
               </tr>
               </tbody>
             </table>

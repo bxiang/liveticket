@@ -10,8 +10,9 @@ angular.module('imaps').controller('ImapsController', ['$scope', '$stateParams',
         	// Create new Imap object
             var imap = new Imaps({
                 name: this.name,
-                latitude: this.latitude,
-                longitude: this.longitude
+                gps: {
+                    coordinates: [this.longitude, this.latitude]
+                }
             });
 
             // Redirect after save
@@ -122,12 +123,12 @@ angular.module('imaps').controller('ImapsController', ['$scope', '$stateParams',
 
             Imaps.query(function(imaps) {
                 $scope.imaps = imaps;
-                _.each(imaps, function(loc) {
+                _.each(imaps, function(imap) {
                     var thisMarker = {
-                        latitude: loc.latitude,
-                        longitude:  loc.longitude,
+                        latitude: imap.gps.coordinates[1],
+                        longitude:  imap.gps.coordinates[0],
                         showWindow: false,
-                        title: loc.name
+                        title: imap.name
                     };
 
                     thisMarker.closeClick = function () {

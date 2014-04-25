@@ -16,12 +16,19 @@ var ImapSchema = new Schema({
 		required: 'Please fill Imap name',
 		trim: true
 	},
-	latitude: {
-		type: Number,
+	gps: {
+		type: {
+			type: String,
+			default: 'Point'
+		},
+		coordinates: [Number]
 	},
-	longitude: {
-		type: Number,
-	},
+	// latitude: {
+	// 	type: Number,
+	// },
+	// longitude: {
+	// 	type: Number,
+	// },
 	created: {
 		type: Date,
 		default: Date.now

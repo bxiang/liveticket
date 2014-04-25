@@ -105,8 +105,9 @@ var _initMap = function(db) {
 		for ( var i = 0; i < 20; i++) {
 			imap = new Imap({
 				name: 'H' + i,
-				latitude: _getLatitude(),
-				longitude: _getLongitude(),
+				gps: {
+					coordinates: [_getLongitude(), _getLatitude()]
+				},
 				user: obj
 			});
 			imap.save();
