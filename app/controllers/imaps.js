@@ -52,6 +52,7 @@ exports.update = function(req, res) {
 	});
 };
 
+
 /**
  * Delete an Imap
  */
@@ -73,7 +74,17 @@ exports.delete = function(req, res) {
  * List of Imaps
  */
 exports.list = function(req, res) {
-	Imap.find().sort('-created').populate('user', 'displayName').exec(function(err, imaps) {
+	console.log(JSON.stringify(req.query));
+	// Imap.find().sort('-created').populate('user', 'displayName').exec(function(err, imaps) {
+	Imap.aggregate([{ 
+		$geoNear: { 
+		  near: [-79.40845, 43.77394], 
+		  distanceField: "distance", 
+		  spherical: true, 
+		  distanceMultiplier: 6371, 
+		  limit: 10 
+		} 
+	}]).exec(function(err, imaps) {
 		if (err) {
 			res.render('error', {
 				status: 500
